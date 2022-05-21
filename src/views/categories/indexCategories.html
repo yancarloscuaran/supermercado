@@ -1,14 +1,8 @@
-{% extends 'layouts/base.html' %}
-
-{% block title %}
-    Select Student Assistance
-{% endblock %}
-
-{% block content %}
+{% extends 'layouts/base.html' %} {% block title %} categories {% endblock %} {% block content %}
 <div class="container mt-3 row">
     <div class="col-4"></div>
     <div class="mb-3 col">
-        <form  method="POST">
+        <form method="POST">
             <div class="col"></div>
             <select name="period" class="form-control">
                 <option selected='true' disabled>Period</option>
@@ -22,47 +16,40 @@
                     {% endfor %}
                 {% endif%}
             </select>
-        </div>
-    <div class="col-3"> <button type="submit" class="btn btn-dark" >Choose</button></div>
+    </div>
+    <div class="col-3"> <button type="submit" class="btn btn-dark">Choose</button></div>
     </form>
 </div>
 <div class="container">
     <div class="row">
         <div class="col-1"></div>
         <div class="col">
-            <a class="btn btn-dark" href="{{url_for('createStudent')}}" >New Student</a>
+            <a class="btn btn-dark" href="{{url_for('createCategories')}}">New Category</a>
             <table class="table">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Identification</th>
                         <th>Name</th>
-                        <th>Surname</th>
-                        <th>Phone Number</th>
-                        <th>Email</th>
-                        <th>Semester</th>
+                        <th>Barcode</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for student in students %}
+                    {% for category in categories %}
                     <tr>
                         <td>{{loop.index}}</td>
-                        <td>{{student[1]}}</td>
-                        <td>{{student[2]}}</td>
-                        <td>{{student[3]}}</td>
-                        <td>{{student[4]}}</td>
-                        <td>{{student[5]}}</td>
-                        <td>{{student[6]}}</td>
+                        <td><a class="btn" href="{{url_for('indexProducts', category = category[0])}}">{{category[2]}}</a></td>
+                        <td>{{category[3]}}</td>
                         <td>
-                            <a class="btn btn-success" href="{{url_for('createAssistance', idStudent=student[0])}}"> Select</a>
+                            <a class="btn btn-success" href="{{url_for('editCategories', idCategory = category[0])}}">Edit</a>
+                            <a class="btn btn-danger" href="{{url_for('removeCategories', idCategory = category[0])}}">Remove</a>
                         </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-        <div class="col-5"></div>
     </div>
 </div>
-    {% endblock %}
+
+{% endblock %}

@@ -4,7 +4,7 @@ config = {
     'port': 3308,
     'user': 'root',
     'password': '',
-    'database': 'p2_asistencia_actividades'
+    'database': 'dbsupermercado'
 }
 
 DB = mariadb.connect(**config)

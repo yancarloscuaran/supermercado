@@ -1,0 +1,46 @@
+{% extends 'layouts/base.html' %} {% block title %} Create Product {% endblock %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col">
+            <form method="POST" class="container">
+                <div class="mb-3">
+                    <label for="business_id">Type Bunisses</label>
+                    <input class="form-control" type="text" id="business_id" name="business_id" required>
+                </div>
+                <div class="mb-3">
+                    <label for="category_id">Category</label>
+                    <input class="form-control" type="text" id="category_id" name="category_id" required>
+                </div>
+                <div class="mb-3">
+                    <label for="supplier_id">Supplier</label>
+                    <input class="form-control" type="text" id="supplier_id" name="supplier_id" required>
+                </div>
+                <div class="mb-3">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description">Description</label>
+                    <input class="form-control" type="text" id="description" name="description" required>
+                </div>
+                <div class="mb-3">
+                    <label for="value">Value</label>
+                    <input class="form-control" type="text" id="value" name="value" required>
+                </div>
+                <div class="mb-3">
+                    <label for="date_admission">Date Admission</label>
+                    <input class="form-control" type="date" id="date_admission" name="date_admission" required>
+                </div>
+                <div class="mb-3">
+                    <label for="due_date">Due Date</label>
+                    <input class="form-control" type="date" id="due_date" name="due_date" required>
+                </div>
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+{% endblock %}

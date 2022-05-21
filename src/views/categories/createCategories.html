@@ -1,10 +1,4 @@
-{% extends 'layouts/base.html' %}
-
-{% block title %}
-    Create Academic Spaces
-{% endblock %}
-
-{% block content %}
+{% extends 'layouts/base.html' %} {% block title %} Create Categories {% endblock %} {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-3">
@@ -16,14 +10,14 @@
                     <input class="form-control" type="text" name="name" id="name">
                 </div>
                 <div class="mb-3">
-                    <label for="semester">Semester</label>
-                    <input class="form-control" type="text" name="semester" id="semester">
+                    <label for="barcode">Barcode</label>
+                    <input class="form-control" type="text" name="barcode" id="barcode">
                 </div>
-                <button class="btn btn-success" type="submit">Guardar</button>
+                <button class="btn btn-success" type="submit">Save</button>
             </form>
         </div>
         <div class="col-3"></div>
     </div>
 </div>
-    
+
 {% endblock %}
