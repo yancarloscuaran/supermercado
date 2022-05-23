@@ -13,6 +13,7 @@ def indexCategories():
     Global.session['period'] = request.form.get('period')
     return redirect(url_for('indexCategories'))
 
+
 @app.route('/Create/categories', methods=['GET','POST'])
 def createCategories():
     if request.method == 'GET':

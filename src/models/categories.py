@@ -9,6 +9,7 @@ class categoryModel():
         cursor.close()
         return arrCategories
     
+    
     def createCategories(self, data):
         cursor = DB.cursor()
         cursor.execute('INSERT INTO categories (period_id,name,barcode) VALUES(?,?,?)',(data['period_id'], data['name'], data['barcode'],))

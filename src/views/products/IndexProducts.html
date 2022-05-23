@@ -28,7 +28,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Type Bunisses</th>
+                        <th>ID</th>
                         <th>Category</th>
                         <th>Supplier</th>
                         <th>Name</th>
@@ -50,7 +50,6 @@
                         <td>{{product[5]}}</td>
                         <td>{{product[6]}}</td>
                         <td>{{product[7]}}</td>
-                        <td>{{product[8]}}</td>
                         <td>
                             <a class="btn btn-success" href="{{url_for('editProducts', idProduct=product[0])}}">Edit</a>
                             <a class="btn btn-danger" href="{{url_for('removeProducts', idProduct=product[0])}}">Remove</a>

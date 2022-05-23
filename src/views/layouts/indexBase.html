@@ -9,11 +9,12 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body>
+<body color="red">
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <a class="btn btn-light" href="{{url_for('index')}}"> Home </a>
             <a class="btn btn-light" href="{{url_for('indexProducts')}}"> Products </a>
+            <a class="btn btn-light" href="{{url_for('indexSuppliers')}}"> Suppliers </a>
             <a class="btn btn-light" href="{{url_for('indexCategories')}}"> Categories </a>
         </div>
     </nav>
