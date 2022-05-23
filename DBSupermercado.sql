@@ -142,7 +142,6 @@ INSERT INTO `periods` (`id`, `date`, `period`) VALUES
 -- Volcando estructura para tabla dbsupermercado.products
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `business_id` int(11) unsigned DEFAULT NULL,
   `category_id` int(11) unsigned DEFAULT NULL,
   `supplier_id` int(11) unsigned DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -153,17 +152,21 @@ CREATE TABLE IF NOT EXISTS `products` (
   `period_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `product_period_fk` (`period_id`) USING BTREE,
-  KEY `product_business_registration_fk` (`business_id`),
   KEY `product_category_fk` (`category_id`),
   KEY `product_suplier_fk` (`supplier_id`),
-  CONSTRAINT `product_business_registration_fk` FOREIGN KEY (`business_id`) REFERENCES `business_registration` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `product_category_fk` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `product_category_fk` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `product_period_fk` FOREIGN KEY (`period_id`) REFERENCES `periods` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `product_suplier_fk` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2620 DEFAULT CHARSET=utf8;
+  CONSTRAINT `product_suplier_fk` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2629 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla dbsupermercado.products: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` (`id`, `category_id`, `supplier_id`, `name`, `description`, `value`, `date_admission`, `due_date`, `period_id`) VALUES
+	(2624, 20, 2, 'frutas', 'limpieza', 1000, '2022-05-23', '2022-05-23', 3),
+	(2625, 21, 2, 'mango', 'alimento', 1000, '2022-05-25', '2022-05-26', 3),
+	(2626, NULL, NULL, 'jabon', 'limpieza', 2000, '2022-05-23', '2022-05-23', 3),
+	(2627, NULL, NULL, 'arroz', 'limpieza', 2000, '2022-05-25', '2022-05-21', 3),
+	(2628, NULL, NULL, 'jabon', 'limpieza', 2000, '2022-05-23', '2022-05-13', 3);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 -- Volcando estructura para tabla dbsupermercado.purchase_receipts
@@ -212,11 +215,18 @@ CREATE TABLE IF NOT EXISTS `suppliers` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(60) DEFAULT NULL,
   `contact` varchar(60) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `email` varchar(60) DEFAULT NULL,
+  `period_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `suppliers_periods_fk` (`period_id`),
+  CONSTRAINT `suppliers_periods_fk` FOREIGN KEY (`period_id`) REFERENCES `periods` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla dbsupermercado.suppliers: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
+INSERT INTO `suppliers` (`id`, `name`, `contact`, `email`, `period_id`) VALUES
+	(2, 'carolina', '3163550867', 'carloscuaran018@hotmail.com', 3),
+	(4, 'carlos', '3163550867', 'carloscuaran018@gmail.com', 3);
 /*!40000 ALTER TABLE `suppliers` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

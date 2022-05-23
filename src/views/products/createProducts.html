@@ -30,9 +30,9 @@
                         {% if suppliers %}
                             {% for supplier in suppliers %}
                                 {% if pt == supplier[0] %}
-                                    <option selected='True' disabled value="{{supplier[0]}}">{{supplier[1]}}-{{supplier[2]}}</option>
+                                    <option selected='True' disabled value="{{supplier[0]}}">{{supplier[2]}}-{{supplier[3]}}</option>
                                 {% else %}
-                                    <option value="{{supplier[0]}}">{{supplier[1]}}-{{supplier[2]}}</option>
+                                    <option value="{{supplier[0]}}">{{supplier[2]}}-{{supplier[3]}}</option>
                                 {% endif %}
                             {% endfor %}
                         {% endif%}
